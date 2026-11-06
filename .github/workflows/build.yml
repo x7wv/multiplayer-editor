@@ -18,9 +18,11 @@ jobs:
           os: windows-latest
         - name: macOS
           os: macos-latest
-        - name: iOS
-          os: macos-latest
-          target: iOS
+        # iOS is paused: Geode's iOS bindings are mid-update for GD 2.209.
+        # Put these 3 lines back when that settles:
+        # - name: iOS
+        #   os: macos-latest
+        #   target: iOS
         - name: Android32
           os: ubuntu-latest
           target: Android32
@@ -38,8 +40,6 @@ jobs:
         uses: geode-sdk/build-geode-mod@main
         with:
           sdk: given
-          # bindings matching Geode 5.11.2 (main is mid-update for GD 2.209)
-          bindings-ref: 5b5f10628efa307ce65a96abe974b746b449341b
           combine: true
           target: ${{ matrix.config.target }}
 
