@@ -1,0 +1,11 @@
+# One-click deploy of the Multiplayer Editor server (by x7wv) on Render's free plan.
+services:
+  - type: web
+    name: multiplayer-editor
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm ci --omit=dev
+    startCommand: node server.js
+    healthCheckPath: /
+    autoDeploy: true

@@ -11,12 +11,17 @@
 	"version": "v1.0.0",
 	"developer": "x7wv",
 	"description": "Build levels live with your friends. Instant sync, chat, roles, cursors and more. Made by x7wv.",
-	"tags": ["editor", "online", "enhancement", "utility"],
+	"tags": [
+		"editor",
+		"online",
+		"enhancement",
+		"utility"
+	],
 	"links": {},
 	"settings": {
 		"server-url": {
 			"name": "Server URL",
-			"description": "The Multiplayer Editor server to connect to, like <cy>ws://123.45.67.89:8080</c>.",
+			"description": "The Multiplayer Editor server to connect to, like <cy>wss://your-server.onrender.com</c> or <cy>ws://123.45.67.89:8080</c>.",
 			"type": "string",
 			"default": "ws://127.0.0.1:8080"
 		},
@@ -25,7 +30,13 @@
 			"description": "Colors for the collab overlay.",
 			"type": "string",
 			"default": "x7wv",
-			"one-of": ["x7wv", "Classic", "Neon", "Midnight", "Sunset"]
+			"one-of": [
+				"x7wv",
+				"Classic",
+				"Neon",
+				"Midnight",
+				"Sunset"
+			]
 		},
 		"show-cursors": {
 			"name": "Show Cursors",

@@ -3,6 +3,7 @@
 #include <ixwebsocket/IXNetSystem.h>
 #include <ixwebsocket/IXWebSocket.h>
 #include "Net.hpp"
+#include "Certs.hpp"
 
 using namespace geode::prelude;
 
@@ -28,6 +29,14 @@ void Net::connect(std::string const& url) {
 
     m_ws = std::make_unique<ix::WebSocket>();
     m_ws->setUrl(url);
+    if (url.rfind("wss://", 0) == 0) {
+        // encrypted connection: verify the server against the built-in root certificates
+        ix::SocketTLSOptions tls;
+        std::string bundle;
+        for (auto cert : kRootCerts) bundle += cert;
+        tls.caFile = bundle;
+        m_ws->setTLSOptions(tls);
+    }
     m_ws->disablePerMessageDeflate();
     m_ws->setPingInterval(20);
     m_ws->enableAutomaticReconnection();
