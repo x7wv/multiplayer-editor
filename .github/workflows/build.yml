@@ -54,3 +54,25 @@ jobs:
         with:
           name: Build Output
           path: ${{ steps.build.outputs.build-output }}
+
+  release:
+    name: Publish download
+    runs-on: ubuntu-latest
+    needs: ['package']
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: Build Output
+          path: out
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Multiplayer Editor (latest build) - by x7wv
+          body: |
+            Download **x7wv.multiplayer-editor.geode** below and drop it into your Geode mods folder.
+            Works on Windows, macOS and Android. Made by x7wv.
+          files: out/*.geode
+          make_latest: true
