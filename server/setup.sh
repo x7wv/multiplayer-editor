@@ -3,6 +3,7 @@
 # Run on a fresh Ubuntu server:
 #   curl -fsSL https://raw.githubusercontent.com/x7wv/multiplayer-editor/main/server/setup.sh | sudo bash
 set -e
+export DEBIAN_FRONTEND=noninteractive
 echo "== Installing Multiplayer Editor server (made by x7wv) =="
 apt-get update -y
 apt-get install -y git nodejs npm iptables-persistent
