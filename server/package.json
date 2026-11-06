@@ -1,0 +1,19 @@
+{
+  "name": "multiplayer-editor-server",
+  "version": "1.0.0",
+  "description": "Relay server for the Multiplayer Editor Geode mod — made by x7wv",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.js"
+  },
+  "keywords": [],
+  "author": "x7wv",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^8.22.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

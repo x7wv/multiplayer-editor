@@ -1,0 +1,16 @@
+# systemd service: copy to /etc/systemd/system/ then:
+#   sudo systemctl enable --now multiplayer-editor
+[Unit]
+Description=Multiplayer Editor server (by x7wv)
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/multiplayer-editor
+ExecStart=/usr/bin/node server.js
+Environment=PORT=8080
+Restart=always
+RestartSec=3
+User=ubuntu
+
+[Install]
+WantedBy=multi-user.target

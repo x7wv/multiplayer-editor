@@ -1,0 +1,65 @@
+{
+	"geode": "5.11.2",
+	"gd": {
+		"win": "2.2081",
+		"android": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081"
+	},
+	"id": "x7wv.multiplayer-editor",
+	"name": "Multiplayer Editor",
+	"version": "v1.0.0",
+	"developer": "x7wv",
+	"description": "Build levels live with your friends. Instant sync, chat, roles, cursors and more. Made by x7wv.",
+	"tags": ["editor", "online", "enhancement", "utility"],
+	"links": {},
+	"settings": {
+		"server-url": {
+			"name": "Server URL",
+			"description": "The Multiplayer Editor server to connect to, like <cy>ws://123.45.67.89:8080</c>.",
+			"type": "string",
+			"default": "ws://127.0.0.1:8080"
+		},
+		"theme": {
+			"name": "UI Theme",
+			"description": "Colors for the collab overlay.",
+			"type": "string",
+			"default": "x7wv",
+			"one-of": ["x7wv", "Classic", "Neon", "Midnight", "Sunset"]
+		},
+		"show-cursors": {
+			"name": "Show Cursors",
+			"description": "Show your teammates' cursors and names.",
+			"type": "bool",
+			"default": true
+		},
+		"show-selections": {
+			"name": "Show Selections",
+			"description": "Outline what each teammate has selected, in their color.",
+			"type": "bool",
+			"default": true
+		},
+		"sounds": {
+			"name": "Sound Effects",
+			"description": "Play sounds when people join, leave, chat or ping.",
+			"type": "bool",
+			"default": true
+		},
+		"chat-lines": {
+			"name": "Chat Lines",
+			"description": "How many chat messages to show on screen.",
+			"type": "int",
+			"default": 6,
+			"min": 0,
+			"max": 15
+		},
+		"cursor-rate": {
+			"name": "Cursor Update Rate",
+			"description": "Cursor updates per second. Lower saves bandwidth.",
+			"type": "int",
+			"default": 15,
+			"min": 2,
+			"max": 30
+		}
+	}
+}
