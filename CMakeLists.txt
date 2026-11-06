@@ -22,13 +22,18 @@ endif()
 
 add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 
-# TLS (for wss:// servers like Render) - mbedTLS builds the same on every platform
+# TLS (for wss:// servers like Render) - mbedTLS builds the same on every platform.
+# On Windows, Geode uses clang that "simulates" MSVC; mbedTLS would then add MSVC-only
+# flags (/W3 /utf-8) that clang rejects, so hide the simulate id while it configures.
+set(ME_SAVED_C_SIMULATE_ID "${CMAKE_C_SIMULATE_ID}")
+set(CMAKE_C_SIMULATE_ID "")
 CPMAddPackage(
     NAME mbedtls
     URL https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-3.6.2/mbedtls-3.6.2.tar.bz2
     OPTIONS "ENABLE_PROGRAMS OFF" "ENABLE_TESTING OFF" "USE_SHARED_MBEDTLS_LIBRARY OFF"
             "USE_STATIC_MBEDTLS_LIBRARY ON" "MBEDTLS_FATAL_WARNINGS OFF" "GEN_FILES OFF"
 )
+set(CMAKE_C_SIMULATE_ID "${ME_SAVED_C_SIMULATE_ID}")
 # hand the in-tree mbedTLS to IXWebSocket instead of letting it search the system
 set(MBEDTLS_FOUND TRUE)
 set(MBEDTLS_INCLUDE_DIRS ${mbedtls_SOURCE_DIR}/include)
