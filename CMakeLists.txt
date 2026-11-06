@@ -32,3 +32,10 @@ CPMAddPackage(
 target_link_libraries(${PROJECT_NAME} ixwebsocket)
 
 setup_geode_mod(${PROJECT_NAME})
+
+# Net.cpp must include the Windows socket headers before <windows.h>,
+# so it can't use Geode's precompiled header (which pulls windows.h in first).
+set_source_files_properties(src/Net.cpp PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
+if (WIN32)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE WIN32_LEAN_AND_MEAN)
+endif()
