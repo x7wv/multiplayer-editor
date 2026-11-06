@@ -1,7 +1,8 @@
 // Multiplayer Editor — made by x7wv
-#include "Net.hpp"
+// Windows: the socket headers must come before <windows.h> (pulled in by Geode)
 #include <ixwebsocket/IXNetSystem.h>
 #include <ixwebsocket/IXWebSocket.h>
+#include "Net.hpp"
 
 using namespace geode::prelude;
 
